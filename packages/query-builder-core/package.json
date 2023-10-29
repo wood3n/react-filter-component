@@ -1,0 +1,25 @@
+{
+  "name": "@rc-querybuilder/core",
+  "author": "wangkka1@163.com",
+  "license": "MIT",
+  "description": "react query builder component core",
+  "scripts": {},
+  "devDependencies": {},
+  "keywords": [
+    "react",
+    "react component",
+    "query-builder",
+    "typescript",
+    "javascript",
+    "pnpm"
+  ],
+  "homepage": "https://reactqb.icodex.me",
+  "bugs": "https://github.com/wood3n/react-query-builder/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wood3n/react-query-builder"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  }
+}

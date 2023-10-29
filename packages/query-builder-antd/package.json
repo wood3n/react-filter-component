@@ -1,0 +1,59 @@
+{
+  "name": "@rc-querybuilder/antd",
+  "author": "wangkka1@163.com",
+  "license": "MIT",
+  "description": "react query builder component based antd component library",
+  "main": "lib/index.cjs",
+  "module": "es/index.js",
+  "typings": "es/index.d.ts",
+  "files": [
+    "es",
+    "lib"
+  ],
+  "scripts": {
+    "build": "rollup --config rollup.config.ts --configPlugin rollup-plugin-typescript2"
+  },
+  "keywords": [
+    "react",
+    "react component",
+    "query-builder",
+    "typescript",
+    "javascript",
+    "pnpm"
+  ],
+  "homepage": "https://reactqb.icodex.me",
+  "bugs": "https://github.com/wood3n/react-query-builder/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wood3n/react-query-builder"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "dependencies": {
+    "async-validator": "^4.2.5",
+    "classnames": "^2.3.2",
+    "immer": "^10.0.3",
+    "lodash-es": "^4.17.21",
+    "react-dnd": "^16.0.1",
+    "react-dnd-html5-backend": "^16.0.1"
+  },
+  "devDependencies": {
+    "@ant-design/icons": "^5.2.6",
+    "@types/lodash-es": "^4.17.10",
+    "@types/react": "^17.0.69",
+    "@types/react-dom": "17.0.22",
+    "antd": "^5.10.2",
+    "less": "^4.2.0",
+    "prop-types": "15.8.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "storybook": "7.5.1"
+  },
+  "peerDependencies": {
+    "@ant-design/icons": ">=4.0.0",
+    "antd": ">4.0.0",
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  }
+}
