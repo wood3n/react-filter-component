@@ -2,7 +2,8 @@ import React from 'react';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { produce } from 'immer';
-import { get } from 'lodash-es';
+// https://rollupjs.org/troubleshooting/#tree-shaking-doesn-t-seem-to-be-working
+import get from 'lodash-es/get';
 import ExpressionGroup from '../query-expression-group';
 import { DndHandlerProps, QueryConditionExpressionProps, QueryConditionExprssionValueType } from '../types';
 
