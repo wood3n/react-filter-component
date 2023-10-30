@@ -1,5 +1,10 @@
+node_modules
+
+# Ignore artifacts:
+build
+coverage
 dist
 es
 lib
-temp
-.browserslistrc
+
+.husky

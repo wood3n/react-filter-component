@@ -1,9 +1,13 @@
+node_modules
+
 # Ignore artifacts:
 build
 coverage
 dist
 es
 lib
+
+.husky
 
 # Ignore all HTML files:
 **/*.html
