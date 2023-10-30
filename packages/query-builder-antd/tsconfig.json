@@ -5,7 +5,6 @@
     "noEmit": false,
     "declaration": true,
     "declarationMap": false,
-    "emitDeclarationOnly": true,
     "paths": {
       "@/*": ["./src/*"]
     }
