@@ -18,8 +18,10 @@
     "url": "https://github.com/wood3n/react-query-builder"
   },
   "scripts": {
+    "prepare": "husky install",
     "dev": "pnpm --filter docs run storybook",
-    "build:antd": "pnpm --filter @rc-querybuilder/antd run build"
+    "build:antd": "pnpm --filter @rc-querybuilder/antd run build",
+    "test": "jest"
   },
   "devDependencies": {
     "@babel/cli": "^7.23.0",
@@ -28,6 +30,8 @@
     "@babel/preset-env": "^7.23.2",
     "@babel/preset-react": "^7.22.15",
     "@babel/runtime": "^7.23.2",
+    "@commitlint/cli": "^18.2.0",
+    "@commitlint/config-conventional": "^18.1.0",
     "@rollup/plugin-alias": "^5.0.1",
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-commonjs": "^25.0.7",
@@ -46,6 +50,8 @@
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.0.2",
     "postcss": "^8.4.31",
     "postcss-less": "^6.0.0",
     "prettier": "^3.0.3",
@@ -63,5 +69,10 @@
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,json}": "prettier --write",
+    "*.css": "stylelint",
+    "*.less": "stylelint --syntax=less"
   }
 }
