@@ -12,7 +12,6 @@ module.exports = {
     'plugin:@typescript-eslint/strict-type-checked',
     'plugin:import/recommended',
     'plugin:import/typescript',
-    'plugin:json/recommended',
     'prettier',
   ],
   plugins: ['@typescript-eslint'],
