@@ -3,7 +3,7 @@
   "author": "wangkka1@163.com",
   "license": "MIT",
   "description": "react query builder component based antd component library",
-  "main": "lib/index.cjs",
+  "main": "lib/index.js",
   "module": "es/index.js",
   "typings": "es/index.d.ts",
   "files": [
