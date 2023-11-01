@@ -49,11 +49,24 @@
     align-self: center;
     min-width: 0;
     width: 48px;
-    height: auto;
+    height: 24px;
     margin-right: 8px;
     padding: 4px;
     display: flex;
     justify-content: center;
     align-items: center;
+    border: none;
+    border-radius: 4px;
+    background: #f8f9fa;
+    cursor: pointer;
+
+    &:hover {
+      background: #efefef;
+    }
+
+    &.logic-toggle-button-disabled {
+      cursor: not-allowed;
+      background: #f8f9fa;
+    }
   }
 }

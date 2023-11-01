@@ -5,7 +5,8 @@
     "noEmit": false,
     "declaration": true,
     "declarationMap": false,
-    "declarationDir": "./es/dts",
+    "declarationDir": "es/dts",
+    "outDir": "es",
     "paths": {
       "@/*": ["./src/*"]
     }

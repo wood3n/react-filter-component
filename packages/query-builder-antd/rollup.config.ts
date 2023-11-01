@@ -1,5 +1,4 @@
 import { RollupOptions, defineConfig } from 'rollup';
-import path from 'path';
 import { fileURLToPath } from 'url';
 import { DEFAULT_EXTENSIONS } from '@babel/core';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
@@ -8,21 +7,32 @@ import { dts } from 'rollup-plugin-dts';
 import ts2 from 'rollup-plugin-typescript2';
 import { babel } from '@rollup/plugin-babel';
 import postcss from 'rollup-plugin-postcss';
+import url from '@rollup/plugin-url';
 import svgr from '@svgr/rollup';
 import alias from '@rollup/plugin-alias';
+import terser from '@rollup/plugin-terser';
 import del from 'rollup-plugin-delete';
 import autoprefixer from 'autoprefixer';
 import pkg from './package.json' assert { type: 'json' };
-
-const __filename = fileURLToPath(import.meta.url);
-
-const __dirname = path.dirname(__filename);
 
 const extensions = [...DEFAULT_EXTENSIONS, '.ts', '.tsx'];
 
 const rollupOptions: RollupOptions = {
   input: 'src/index.ts',
   output: [
+    {
+      name: 'AntdQueryBuilder',
+      file: pkg.unpkg,
+      format: 'umd',
+      // UMD需要指定这些排除在package外部的依赖名
+      globals: {
+        react: 'React',
+        antd: 'antd',
+        // https://github.com/ant-design/ant-design-icons/issues/14
+        '@ant-design/icons': 'AntDesignIcons',
+      },
+      plugins: [terser()],
+    },
     {
       file: pkg.module,
       format: 'es',
@@ -32,38 +42,43 @@ const rollupOptions: RollupOptions = {
       format: 'cjs',
     },
   ],
-  external: ['react', 'react-dom', 'antd', '@ant-design/icons', /react\/jsx-runtime/, /@babel\/runtime/],
+  external: ['react', 'antd', '@ant-design/icons'],
   plugins: [
-    del({ targets: ['es/*', 'lib/*'] }),
+    del({ targets: ['dist/*', 'es/*', 'lib/*'] }),
     alias({
-      entries: [{ find: '^@/', replacement: path.resolve(__dirname, 'src') }],
+      entries: [
+        {
+          find: /^@\/(.*)$/,
+          replacement: `${fileURLToPath(new URL('./src', import.meta.url))}/$1`,
+        },
+      ],
     }),
     nodeResolve({
       extensions,
     }),
+    // after node resolve
     commonjs(),
     ts2({
       tsconfig: './tsconfig.json',
       useTsconfigDeclarationDir: true,
     }),
     babel({
-      babelHelpers: 'runtime',
       exclude: 'node_modules/**',
       presets: [
         [
           '@babel/preset-react',
           {
-            runtime: 'automatic',
+            runtime: 'classic',
           },
         ],
       ],
-      plugins: ['@babel/plugin-transform-runtime'],
+      babelHelpers: 'bundled',
       extensions,
     }),
     postcss({
+      extensions: ['.css', '.less'],
       minimize: true,
       autoModules: true,
-      extract: true,
       use: {
         sass: null,
         stylus: null,
@@ -75,6 +90,7 @@ const rollupOptions: RollupOptions = {
       },
       plugins: [autoprefixer()],
     }),
+    url(),
     svgr(),
   ],
 };

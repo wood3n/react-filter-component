@@ -19,7 +19,8 @@
   },
   "scripts": {
     "prepare": "husky install",
-    "dev": "pnpm --filter docs run storybook",
+    "dev": "pnpm --filter docs run start",
+    "storybook": "pnpm --filter docs run storybook",
     "build:antd": "pnpm --filter @rc-querybuilder/antd run build",
     "lint": "pnpm run lint:component && pnpm run lint:style",
     "lint-fix": "pnpm run lint-fix:component && pnpm run lint-fix:style",
@@ -33,7 +34,6 @@
   "devDependencies": {
     "@babel/cli": "^7.23.0",
     "@babel/core": "^7.23.2",
-    "@babel/plugin-transform-runtime": "^7.23.2",
     "@babel/preset-env": "^7.23.2",
     "@babel/preset-react": "^7.22.15",
     "@babel/runtime": "^7.23.2",
@@ -44,6 +44,8 @@
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-url": "^8.0.2",
     "@svgr/rollup": "^8.1.0",
     "@types/node": "^20.8.9",
     "@typescript-eslint/eslint-plugin": "^6.9.0",

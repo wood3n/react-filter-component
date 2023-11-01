@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Tag } from 'antd';
+import { Tag } from 'antd';
 import classNames from 'classnames';
 import { ReactComponent as IconToggle } from '@/assets/icons/toggle.svg';
 import { DefaultLogicDesc, DefaultLogicValue } from '../constants';
@@ -10,7 +10,6 @@ interface Props {
   disabled?: boolean;
   value: string;
   onChange?: (value: string) => void;
-  style?: React.CSSProperties;
 }
 
 const LogicToggle: React.FC<Props> = ({ disabled, readonly, value, onChange }) => {
@@ -30,10 +29,16 @@ const LogicToggle: React.FC<Props> = ({ disabled, readonly, value, onChange }) =
       {readonly ? (
         <Tag className="logic-toggle-tag">{DefaultLogicDesc[value]}</Tag>
       ) : (
-        <Button ghost disabled={disabled} onClick={toggleValue} className="logic-toggle-button">
+        <button
+          type="button"
+          onClick={toggleValue}
+          className={classNames('logic-toggle-button', {
+            'logic-toggle-button-disabled': disabled,
+          })}
+        >
           <div className="logic-toggle-button-text">{DefaultLogicDesc[value]}</div>
-          <IconToggle style={{ color: '#585B60', width: '0.8em' }} />
-        </Button>
+          <IconToggle style={{ color: '#585B60', width: 16, height: 16 }} />
+        </button>
       )}
       <div className="curly-brace-wrapper">
         <div

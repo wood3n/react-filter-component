@@ -1,12 +1,15 @@
 {
   "name": "@rc-querybuilder/antd",
+  "version": "1.0.0",
   "author": "wangkka1@163.com",
   "license": "MIT",
   "description": "react query builder component based antd component library",
   "main": "lib/index.js",
   "module": "es/index.js",
   "typings": "es/index.d.ts",
+  "unpkg": "dist/index.min.js",
   "files": [
+    "dist",
     "es",
     "lib"
   ],
