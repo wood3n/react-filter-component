@@ -3,7 +3,8 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@rc-querybuilder/antd": ["../query-builder-antd/src/index"]
     }
   },
   "include": ["src"],

@@ -60,6 +60,7 @@ module.exports = {
         tsx: 'never',
       },
     ],
+    'import/no-unresolved': [1, { ignore: ['@rc-querybuilder/antd'] }],
     'no-shadow': 0,
     'no-underscore-dangle': 0,
     'import/no-extraneous-dependencies': 0,

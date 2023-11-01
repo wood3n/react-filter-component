@@ -19,8 +19,10 @@
   },
   "scripts": {
     "prepare": "husky install",
+    "postinstall": "pnpm --filter \"./packages/**\" run build",
     "dev": "pnpm --filter docs run start",
     "storybook": "pnpm --filter docs run storybook",
+    "build:core": "pnpm --filter @rc-querybuilder/core run build",
     "build:antd": "pnpm --filter @rc-querybuilder/antd run build",
     "lint": "pnpm run lint:component && pnpm run lint:style",
     "lint-fix": "pnpm run lint-fix:component && pnpm run lint-fix:style",

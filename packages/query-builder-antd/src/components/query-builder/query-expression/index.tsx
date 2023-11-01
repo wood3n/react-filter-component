@@ -112,7 +112,7 @@ const Expression: React.FC<Props> = ({
         // @ts-expect-error 类型错误
         options={typeof operators === 'function' ? operators(value?.left) : objToSelectOptions(DefaultOperatorDesc)}
         placeholder="请选择"
-        dropdownMatchSelectWidth={false}
+        popupMatchSelectWidth={false}
         style={{
           width: 100,
         }}
