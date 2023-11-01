@@ -1,5 +1,6 @@
 {
   "name": "@rc-querybuilder/core",
+  "version": "1.0.0",
   "author": "wangkka1@163.com",
   "license": "MIT",
   "description": "react query builder component core",
