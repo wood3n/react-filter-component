@@ -72,6 +72,7 @@ module.exports = {
     'react/jsx-filename-extension': [1, { extensions: ['.jsx', '.tsx'] }],
     'react/function-component-definition': 0,
     'react/jsx-props-no-spreading': 0,
+    '@typescript-eslint/triple-slash-reference': 0,
     '@typescript-eslint/no-shadow': 'error',
     '@typescript-eslint/no-var-requires': 0,
     '@typescript-eslint/no-explicit-any': 0,

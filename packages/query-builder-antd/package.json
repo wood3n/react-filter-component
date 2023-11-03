@@ -17,21 +17,18 @@
     "build": "rollup --config rollup.config.ts --configPlugin rollup-plugin-typescript2"
   },
   "keywords": [
+    "antd",
     "react",
     "react component",
     "query-builder",
     "typescript",
-    "javascript",
-    "pnpm"
+    "javascript"
   ],
   "homepage": "https://reactqb.icodex.me",
   "bugs": "https://github.com/wood3n/react-query-builder/issues",
   "repository": {
     "type": "git",
     "url": "https://github.com/wood3n/react-query-builder"
-  },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
   },
   "dependencies": {
     "async-validator": "^4.2.5",
@@ -48,13 +45,14 @@
     "@types/react-dom": "17.0.22",
     "antd": "^5.10.2",
     "less": "^4.2.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react": "^17.0.2"
   },
   "peerDependencies": {
     "@ant-design/icons": ">=4.0.0",
     "antd": ">4.0.0",
-    "react": ">=16.8.0",
-    "react-dom": ">=16.8.0"
+    "react": ">=16.8.0"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   }
 }

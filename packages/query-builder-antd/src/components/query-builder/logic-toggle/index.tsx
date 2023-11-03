@@ -10,15 +10,16 @@ interface Props {
   disabled?: boolean;
   value: string;
   onChange?: (value: string) => void;
+  style?: React.CSSProperties;
 }
 
-const LogicToggle: React.FC<Props> = ({ disabled, readonly, value, onChange }) => {
+const LogicToggle: React.FC<Props> = ({ disabled, readonly, value, onChange, style }) => {
   const toggleValue = () => {
     onChange?.(value === DefaultLogicValue.And ? DefaultLogicValue.Or : DefaultLogicValue.And);
   };
 
   return (
-    <div className="logic-toggle">
+    <div className="logic-toggle" style={style}>
       <div className="curly-brace-wrapper">
         <div
           className={classNames('curly-brace', 'curly-brace-start', {

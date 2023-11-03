@@ -5,23 +5,44 @@
   "license": "MIT",
   "description": "react query builder component core",
   "main": "lib/index.js",
+  "unpkg": "dist/index.min.js",
   "module": "es/index.js",
   "typings": "es/index.d.ts",
+  "files": [
+    "dist",
+    "es",
+    "lib"
+  ],
   "scripts": {},
-  "devDependencies": {},
   "keywords": [
     "react",
     "react component",
     "query-builder",
     "typescript",
-    "javascript",
-    "pnpm"
+    "javascript"
   ],
   "homepage": "https://reactqb.icodex.me",
   "bugs": "https://github.com/wood3n/react-query-builder/issues",
   "repository": {
     "type": "git",
     "url": "https://github.com/wood3n/react-query-builder"
+  },
+  "dependencies": {
+    "async-validator": "^4.2.5",
+    "classnames": "^2.3.2",
+    "immer": "^10.0.3",
+    "lodash-es": "^4.17.21",
+    "react-dnd": "^16.0.1",
+    "react-dnd-html5-backend": "^16.0.1",
+    "use-immer": "^0.9.0"
+  },
+  "devDependencies": {
+    "@types/lodash-es": "^4.17.10",
+    "@types/react": "^17.0.69",
+    "react": "^17.0.2"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
