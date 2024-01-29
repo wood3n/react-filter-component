@@ -1,23 +1,16 @@
 import React from 'react';
 import { RuleItem } from 'async-validator';
+import {
+  QueryBuilderCoreType,
+  ConditionValueType,
+  CustomLogicType,
+  ValueType,
+  ValueOption,
+} from '@rc-querybuilder/core';
 import { DefaultLogicValue } from './constants';
 
-export interface OperatorOption {
-  label: React.ReactNode;
-  value: unknown;
+export interface OperatorOption extends ValueOption {
   disabled?: boolean;
-}
-
-export interface ExpressionValueType {
-  left?: string;
-  operator?: string;
-  value?: any;
-}
-
-export interface QueryConditionExprssionValueType {
-  logic?: string;
-  expression?: ExpressionValueType;
-  filters?: QueryConditionExprssionValueType[];
 }
 
 export interface CustomOperandElementProps {
@@ -43,9 +36,9 @@ export interface OperandType {
   children?: React.ReactElement<CustomOperandElementProps>;
 }
 
-export type RenderOperandType = (expression?: ExpressionValueType) => OperandType;
+export type RenderOperandType = (condition?: ConditionValueType) => OperandType;
 
-export interface QueryConditionExpressionProps {
+export interface QueryConditionExpressionProps extends QueryBuilderCoreType {
   /**
    * 左侧操作数自定义类型
    */
@@ -59,11 +52,7 @@ export interface QueryConditionExpressionProps {
    */
   operators?:
     | OperatorOption[]
-    | ((defaultOperators: OperatorOption[], expression: ExpressionValueType) => OperatorOption[]);
-  /**
-   * 自定义AND，OR的值
-   */
-  logics?: Record<DefaultLogicValue, string>;
+    | ((defaultOperators: OperatorOption[], condition: ConditionValueType) => OperatorOption[]);
   /**
    * 查看模式
    */
@@ -76,19 +65,11 @@ export interface QueryConditionExpressionProps {
    * 禁用
    */
   disabled?: boolean;
-  /**
-   * 组件值
-   */
-  value?: QueryConditionExprssionValueType;
-  /**
-   * 修改组件值触发
-   */
-  onChange?: (value?: QueryConditionExprssionValueType) => void;
   className?: string;
   style?: React.CSSProperties;
 }
 
-export interface InnerValueType extends Exclude<QueryConditionExprssionValueType, 'filters'> {
+export interface InnerValueType extends Exclude<ValueType, 'filters'> {
   /**
    * 节点路径
    */

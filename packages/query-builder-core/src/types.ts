@@ -13,23 +13,47 @@ export interface ConditionValueType {
   comparand?: any;
 }
 
-export interface FlatValueType {
-  logic?: string;
-  conditions?: (ConditionValueType | FlatValueType)[];
+export type ConditionGroupType = ConditionValueType | ValueType;
+
+export interface ValueType {
+  /**
+   * 逻辑连接符：and，or
+   */
+  logic: unknown;
+  /**
+   * 条件组
+   */
+  conditions?: ConditionGroupType[];
 }
 
-export interface WrapperedValueType {
-  logic?: string;
-  condition?: ConditionValueType;
-  conditions?: WrapperedValueType[];
+export interface ValueOption {
+  label: React.ReactNode;
+  value: unknown;
 }
 
-export interface Props<
-  WrapperCondition = boolean,
-  ValueType = WrapperCondition extends true ? WrapperedValueType : FlatValueType,
-> {
-  wrapperCondition?: WrapperCondition;
-  value?: ValueType;
+/** 自定义逻辑连接符号 */
+export type CustomLogicType = Record<'AND' | 'OR', ValueOption>;
+
+export interface QueryBuilderCoreType {
+  /**
+   * 默认值
+   */
   defaultValue?: ValueType;
-  onChange?: (value: ValueType) => void;
+  /**
+   * 组件值
+   */
+  value?: ValueType;
+  /**
+   * 组件值改变回调
+   */
+  onChange?: (value: ValueType | undefined) => void;
+  /**
+   * 自定义AND，OR的值
+   */
+  logics?: CustomLogicType;
+}
+
+export interface DndHandlerProps {
+  dragPath: string[];
+  dropPath: string[];
 }

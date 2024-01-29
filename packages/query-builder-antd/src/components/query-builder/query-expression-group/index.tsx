@@ -14,15 +14,19 @@ interface Props extends QueryConditionExpressionProps {
 }
 
 const ExpressionGroup: React.FC<Props> = ({
+  value,
+  onChange,
+  onAddCondition,
+  onAddConditionGroup,
+  onCopy,
+  onDelete,
+  onDrop,
   leftOperand,
   rightOperand,
   path = ['filters'],
   disabled,
-  value = { logic: DefaultLogicValue.And, filters: [] },
-  onChange,
-  onDrop,
 }) => {
-  const filtersLength = value.filters?.length ?? 0;
+  const filtersLength = value?.conditions?.length ?? 0;
   const showLogicSelect = filtersLength > 1;
 
   return (
@@ -41,39 +45,36 @@ const ExpressionGroup: React.FC<Props> = ({
         />
       )}
       <div className="expression-group-list">
-        {value.filters?.map(({ logic, expression, filters }, i) => {
+        {value?.conditions?.map(({ logic, conditions, left, operator, value }, i) => {
           const itemPath = [...path, String(i)];
           const key = itemPath.join('_');
 
-          if (expression) {
+          if (conditions) {
             return (
-              <Expression
+              <GroupWrapper
                 key={key}
-                path={[...itemPath, 'expression']}
+                value={{
+                  logic,
+                  conditions,
+                }}
+                disabled={disabled}
                 leftOperand={leftOperand}
                 rightOperand={rightOperand}
-                disabled={disabled}
-                value={expression}
-                onChange={newExpression => {
+                path={[...itemPath, 'filters']}
+                onChange={newGroupValue => {
                   const newValue = produce(value, draft => {
-                    draft.filters![i].expression = newExpression;
+                    /*
+                     * draft.filters![i].logic = newGroupValue?.logic;
+                     * draft.filters![i].filters = newGroupValue?.filters;
+                     */
+                    draft.conditions[i] = { ...newGroupValue };
                   });
 
                   onChange?.(newValue);
                 }}
-                onCopy={() => {
-                  const newValue = produce(value, draft => {
-                    draft.filters?.splice(i + 1, 0, { expression });
-                  });
-
-                  onChange?.(newValue);
-                }}
+                onCopy={() => onCopy(path, i)}
                 onDelete={() => {
-                  const newValue = produce(value, draft => {
-                    draft.filters!.splice(i, 1);
-                  });
-
-                  onChange?.(newValue);
+                  onDelete(path, i);
                 }}
                 onDrop={onDrop}
               />
@@ -81,37 +82,27 @@ const ExpressionGroup: React.FC<Props> = ({
           }
 
           return (
-            <GroupWrapper
+            <Expression
               key={key}
-              value={{
-                logic,
-                filters,
-              }}
-              disabled={disabled}
+              path={[...itemPath, 'expression']}
               leftOperand={leftOperand}
               rightOperand={rightOperand}
-              path={[...itemPath, 'filters']}
-              onChange={newGroupValue => {
+              disabled={disabled}
+              value={{
+                left,
+                operator,
+                value,
+              }}
+              onChange={newExpression => {
                 const newValue = produce(value, draft => {
-                  draft.filters![i].logic = newGroupValue?.logic;
-                  draft.filters![i].filters = newGroupValue?.filters;
+                  draft.conditions![i] = { ...newExpression };
                 });
 
                 onChange?.(newValue);
               }}
-              onCopy={() => {
-                const newValue = produce(value, draft => {
-                  draft.filters?.splice(i + 1, 0, { logic, filters });
-                });
-
-                onChange?.(newValue);
-              }}
+              onCopy={() => onCopy(path, i)}
               onDelete={() => {
-                const newValue = produce(value, draft => {
-                  draft.filters!.splice(i, 1);
-                });
-
-                onChange?.(newValue);
+                onDelete(path, i);
               }}
               onDrop={onDrop}
             />
@@ -120,40 +111,17 @@ const ExpressionGroup: React.FC<Props> = ({
         <Space>
           <Button
             type="primary"
-            size="small"
             disabled={disabled}
             onClick={() => {
-              const newValue = produce(value, draft => {
-                draft.logic ??= DefaultLogicValue.And;
-                draft.filters ??= [];
-                draft.filters.push({
-                  expression: {},
-                });
-              });
-
-              onChange?.(newValue);
+              onAddCondition(path);
             }}
           >
             添加条件
           </Button>
           <Button
             disabled={disabled}
-            size="small"
             onClick={() => {
-              const newValue = produce(value, draft => {
-                draft.logic ??= DefaultLogicValue.And;
-                draft.filters ??= [];
-                draft.filters.push({
-                  logic: 'AND',
-                  filters: [
-                    {
-                      expression: {},
-                    },
-                  ],
-                });
-              });
-
-              onChange?.(newValue);
+              onAddConditionGroup(path);
             }}
           >
             添加条件组

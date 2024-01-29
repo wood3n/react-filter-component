@@ -7,11 +7,8 @@ import commonjs from '@rollup/plugin-commonjs';
 import { dts } from 'rollup-plugin-dts';
 import ts2 from 'rollup-plugin-typescript2';
 import { babel } from '@rollup/plugin-babel';
-import postcss from 'rollup-plugin-postcss';
-import svgr from '@svgr/rollup';
 import alias from '@rollup/plugin-alias';
 import del from 'rollup-plugin-delete';
-import autoprefixer from 'autoprefixer';
 import pkg from './package.json' assert { type: 'json' };
 
 const __filename = fileURLToPath(import.meta.url);
@@ -32,7 +29,7 @@ const rollupOptions: RollupOptions = {
       format: 'cjs',
     },
   ],
-  external: ['react', 'react-dom', 'antd', '@ant-design/icons', /react\/jsx-runtime/, /@babel\/runtime/],
+  external: ['react', 'react-dom', /react\/jsx-runtime/, /@babel\/runtime/],
   plugins: [
     del({ targets: ['es/*', 'lib/*'] }),
     alias({
@@ -60,22 +57,6 @@ const rollupOptions: RollupOptions = {
       plugins: ['@babel/plugin-transform-runtime'],
       extensions,
     }),
-    postcss({
-      minimize: true,
-      autoModules: true,
-      extract: true,
-      use: {
-        sass: null,
-        stylus: null,
-        less: {
-          lessOptions: {
-            javascriptEnabled: true,
-          },
-        },
-      },
-      plugins: [autoprefixer()],
-    }),
-    svgr(),
   ],
 };
 

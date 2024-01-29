@@ -1,1 +1,1 @@
-# react query builder
+# @rc-querybuilder/core

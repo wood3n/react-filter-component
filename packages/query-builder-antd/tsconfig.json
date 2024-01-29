@@ -3,12 +3,15 @@
   "compilerOptions": {
     "baseUrl": "./",
     "noEmit": false,
+    "jsx": "preserve",
     "declaration": true,
     "declarationMap": false,
     "declarationDir": "es/dts",
     "outDir": "es",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@rc-querybuilder/core": ["../query-builder-core/src/index"],
+      "@rc-querybuilder/core/*": ["../query-builder-core/src/*"]
     }
   },
   "include": ["src"],

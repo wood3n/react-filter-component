@@ -9,6 +9,7 @@ module.exports = {
   extends: [
     'airbnb',
     'airbnb/hooks',
+    'plugin:@typescript-eslint/recommended-type-checked',
     'plugin:@typescript-eslint/strict-type-checked',
     'plugin:import/recommended',
     'plugin:import/typescript',
@@ -49,6 +50,7 @@ module.exports = {
   ],
   rules: {
     'linebreak-style': 0,
+    'multiline-comment-style': ['error', 'starred-block'],
     'import/no-cycle': 0,
     'import/extensions': [
       'error',
@@ -72,6 +74,11 @@ module.exports = {
     'react/jsx-filename-extension': [1, { extensions: ['.jsx', '.tsx'] }],
     'react/function-component-definition': 0,
     'react/jsx-props-no-spreading': 0,
+    'react-hooks/exhaustive-deps': 0,
+    'no-unused-vars': 'off',
+    'no-use-before-define': 'off',
+    '@typescript-eslint/no-use-before-define': 'error',
+    '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_|draft' }],
     '@typescript-eslint/triple-slash-reference': 0,
     '@typescript-eslint/no-shadow': 'error',
     '@typescript-eslint/no-var-requires': 0,
