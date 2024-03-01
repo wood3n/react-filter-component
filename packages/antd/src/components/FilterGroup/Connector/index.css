@@ -1,0 +1,29 @@
+.react-filter-group-connector {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  .curly-brace {
+    border-radius: 8px;
+    border: 2px solid #edeeec;
+    min-height: 9px;
+    width: 32px;
+    height: calc(100% - 14px);
+
+    &.curly-brace-start {
+      margin-top: 14px;
+      border-right: none;
+      border-bottom: none;
+      border-top-right-radius: unset;
+      border-bottom-left-radius: unset;
+    }
+
+    &.curly-brace-end {
+      border-right: none;
+      border-top: none;
+      border-top-left-radius: unset;
+      border-bottom-right-radius: unset;
+      margin-bottom: 14px;
+    }
+  }
+}

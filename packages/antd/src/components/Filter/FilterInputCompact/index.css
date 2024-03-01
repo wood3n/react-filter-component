@@ -1,0 +1,15 @@
+.react-filter-input-compact {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+
+  .react-filter-input-content {
+    flex: 1;
+  }
+
+  .react-filter-input-operator {
+    flex: 0 0 90px;
+    min-width: 0;
+  }
+}

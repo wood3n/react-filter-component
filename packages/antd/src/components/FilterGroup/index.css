@@ -1,0 +1,11 @@
+.react-filter-group {
+  display: flex;
+  justify-content: stretch;
+
+  .react-filter-group-list {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+  }
+}
