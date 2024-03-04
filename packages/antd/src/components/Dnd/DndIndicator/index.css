@@ -1,5 +1,6 @@
 .drag-over-indicator {
   position: absolute;
+  left: -5px;
   height: 2px;
   width: 100%;
   background-color: #1c68fd;
@@ -7,8 +8,8 @@
   &::before {
     position: absolute;
     content: '';
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
     border: 2px solid #1c68fd;
     left: -8px;

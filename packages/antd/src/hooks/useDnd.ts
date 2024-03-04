@@ -10,18 +10,30 @@ interface Props {
 }
 
 export const useDnd = ({ path }: Props) => {
-  const { over } = useDndContext();
+  const { active, over } = useDndContext();
   const mouse = useMousePosition();
 
   const dropPlacement = useMemo(() => {
-    const index = path.at(-1);
-    if (index === '0' && over?.rect) {
-      const y = mouse.clientY - over.rect.top; // 获取鼠标在元素中的y坐标
-      return y > over.rect.height / 2 ? 'bottom' : 'top';
+    if (active && over) {
+      const dragPath: string[] = active.data.current?.path;
+      const dragIndex = Number(dragPath.at(-1));
+      const dropPath: string[] = over.data.current?.path;
+      const dropIndex = Number(dropPath.at(-1));
+
+      if (dropIndex === 0) {
+        // dragItem over相邻的 dropItem 且 dropItem 为第一项时只能放置在 dropItem 上方
+        if (dragPath.length === dropPath.length && dragIndex === 1) {
+          return 'top';
+        }
+
+        // other
+        const y = mouse.clientY - over.rect.top;
+        return y > over.rect.height / 2 ? 'bottom' : 'top';
+      }
     }
 
     return 'bottom';
-  }, []);
+  }, [mouse, active, over]);
 
   const {
     attributes,

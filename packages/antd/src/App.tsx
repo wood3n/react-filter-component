@@ -2,4 +2,8 @@ import ReactDOM from 'react-dom';
 
 import { ReactFilter } from '.';
 
-ReactDOM.render(<ReactFilter />, document.getElementById('root'));
+const App = () => {
+  return <ReactFilter />;
+};
+
+ReactDOM.render(<App />, document.getElementById('root'));

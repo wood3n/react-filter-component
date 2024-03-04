@@ -1,16 +1,15 @@
-import { Button, Space } from 'antd';
-
 import { useFilterFieldName } from '@/hooks';
-import type { DefaultValueType, FilterPath, FilterProps, SelectOption } from '@/types';
+import type { DefaultValueType, FilterPath, SelectOption } from '@/types';
 
 import Filter from '../Filter';
+import FilterOperation from '../FilterOperation';
 import Connector from './Connector';
+import FilterGroupFooter from './GroupFooter';
 import FilterGroupWrapper from './GroupWrapper';
 
 import './index.css';
 
-export interface FilterGroupProps<VT extends object> extends FilterProps<VT> {
-  path?: FilterPath;
+export interface FilterGroupProps<VT extends object> {
   operators: SelectOption[];
   connectors: SelectOption[];
   value: VT;
@@ -20,10 +19,11 @@ export interface FilterGroupProps<VT extends object> extends FilterProps<VT> {
   onChangeFilter: (value: Record<string, any>, path: FilterPath) => void;
   onCopy: (path: FilterPath) => void;
   onDelete: (path: FilterPath) => void;
+  path?: FilterPath;
+  extraFooterNode?: React.ReactNode;
 }
 
 const FilterGroup = <VT extends object = DefaultValueType>({
-  path = [],
   value,
   onAddFilter,
   onAddFilterGroup,
@@ -33,6 +33,8 @@ const FilterGroup = <VT extends object = DefaultValueType>({
   onDelete,
   connectors,
   operators,
+  path = [],
+  extraFooterNode,
 }: FilterGroupProps<VT>) => {
   const { connector: connectorFieldName, filters: filterGroupFieldName } = useFilterFieldName();
 
@@ -59,30 +61,34 @@ const FilterGroup = <VT extends object = DefaultValueType>({
 
           if (isFilterGroup) {
             return (
-              <FilterGroupWrapper
-                key={key}
-                path={childPath}
-                value={filterItemValue}
-                onDelete={() => {
-                  onDelete(childPath);
+              <FilterGroupWrapper key={key} path={childPath} value={filterItemValue} connectors={connectors}>
+                {({ dndHandlerProps }) => {
+                  return (
+                    <FilterGroup
+                      path={childPath}
+                      value={filterItemValue}
+                      onAddFilter={onAddFilter}
+                      onAddFilterGroup={onAddFilterGroup}
+                      onChangeConnector={onChangeConnector}
+                      onChangeFilter={onChangeFilter}
+                      onDelete={onDelete}
+                      onCopy={onCopy}
+                      connectors={connectors}
+                      operators={operators}
+                      extraFooterNode={
+                        <FilterOperation
+                          onDelete={() => {
+                            onDelete(childPath);
+                          }}
+                          onCopy={() => {
+                            onCopy(childPath);
+                          }}
+                          dndHandlerProps={dndHandlerProps}
+                        />
+                      }
+                    />
+                  );
                 }}
-                onCopy={() => {
-                  onCopy(childPath);
-                }}
-                connectors={connectors}
-              >
-                <FilterGroup
-                  path={childPath}
-                  value={filterItemValue}
-                  onAddFilter={onAddFilter}
-                  onAddFilterGroup={onAddFilterGroup}
-                  onChangeConnector={onChangeConnector}
-                  onChangeFilter={onChangeFilter}
-                  onDelete={onDelete}
-                  onCopy={onCopy}
-                  connectors={connectors}
-                  operators={operators}
-                />
               </FilterGroupWrapper>
             );
           }
@@ -105,23 +111,15 @@ const FilterGroup = <VT extends object = DefaultValueType>({
             />
           );
         })}
-        <Space size={8}>
-          <Button
-            type="primary"
-            onClick={() => {
-              onAddFilter(filterGroupPath);
-            }}
-          >
-            添加条件
-          </Button>
-          <Button
-            onClick={() => {
-              onAddFilterGroup(filterGroupPath);
-            }}
-          >
-            添加条件组
-          </Button>
-        </Space>
+        <FilterGroupFooter
+          onAddFilter={() => {
+            onAddFilter(filterGroupPath);
+          }}
+          onAddFilterGroup={() => {
+            onAddFilterGroup(filterGroupPath);
+          }}
+          extra={extraFooterNode}
+        />
       </div>
     </div>
   );

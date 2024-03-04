@@ -9,7 +9,6 @@ export default defineConfig({
     react(),
     // use this plugin with tsconfig paths to import workspace dependencies
     tsconfigPaths(),
-    // @ts-expect-error error type
     svgr(),
   ],
   server: {
