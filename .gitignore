@@ -40,6 +40,7 @@ build/Release
 build
 es
 lib
+doc_build
 
 # Dependency directories
 node_modules/

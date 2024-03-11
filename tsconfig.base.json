@@ -8,15 +8,13 @@
     "resolveJsonModule": true,
     "allowJs": false,
     "noEmit": true,
-    "declaration": true,
     "noImplicitAny": false,
     "noImplicitReturns": true,
-    "declarationMap": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "isolatedModules": true,
+    "strictNullChecks": true,
     "forceConsistentCasingInFileNames": true,
-    "strict": true,
     "skipLibCheck": true
-  }
+  },
+  "types": ["node"]
 }

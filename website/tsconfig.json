@@ -1,0 +1,10 @@
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@react-filter/antd": ["../packages/antd/src/index.ts"]
+    }
+  },
+  "include": ["docs", "rspress.config.ts"]
+}
