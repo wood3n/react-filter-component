@@ -26,6 +26,7 @@
     "dev:website": "pnpm --filter website run dev",
     "build:antd": "pnpm --filter @react-filter/antd run build",
     "build:website": "pnpm --filter website run build",
+    "publish": "pnpm publish --filter @react-filter/antd --access=public",
     "lint-fix": "eslint --fix --ext .js,.jsx,.ts,.tsx . && stylelint \"**/*.{css,less}\" --fix",
     "prettier": "prettier . --write",
     "test": "jest"
