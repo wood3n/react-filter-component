@@ -5,6 +5,7 @@ import { pluginPlayground } from '@rspress/plugin-playground';
 
 export default defineConfig({
   lang: 'zh',
+  base: '/react-filter-component/',
   root: path.join(__dirname, 'docs'),
   outDir: 'dist',
   title: 'react filter',
