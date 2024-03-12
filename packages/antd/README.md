@@ -1,9 +1,5 @@
 # @react-filter/antd
 
-<p align="center">
-  <img width="200px" height="200px" src="./website/docs//public/react-filter.png">
-</p>
-
 ## 安装
 
 ```shell
