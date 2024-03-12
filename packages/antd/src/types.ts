@@ -78,56 +78,6 @@ export interface FilterProps<VT extends object = DefaultValueType> {
   // renderGroupFooter?: (props: CustomGroupProps<VT>) => React.ReactElement;
 }
 
-type CustomizeComponent<P> =
-  | React.ComponentType<P>
-  | React.ForwardRefExoticComponent<P>
-  | React.FC<P>
-  | keyof React.ReactHTML;
-
-export interface ComponentMap<VT> {
-  connector: CustomConnectorComponentType;
-  filter: CustomFilterComponentType;
-  filterGroup: CustomFilterGroupComponentType<VT>;
-}
-
-export type CustomConnectorComponentType = CustomizeComponent<CustomConnectorProps>;
-
-export interface CustomConnectorProps {
-  value: any;
-  onChange: (value: any) => void;
-}
-
-export type CustomFilterComponentType = CustomizeComponent<CustomFilterProps>;
-
-export interface CustomFilterProps {
-  path: FilterPath;
-  value: Record<string, any>;
-  onChange: (value: Record<string, any>) => void;
-  onCopy: VoidFunction;
-  onDelete: VoidFunction;
-  dndHandlerProps: Record<string, any>;
-}
-
-export type CustomFilterGroupComponentType<VT> = CustomizeComponent<CustomGroupProps<VT>>;
-
-export interface CustomFilterOperationProps {
-  path: FilterPath;
-  value: Record<string, any>;
-  onCopy: VoidFunction;
-  onDelete: VoidFunction;
-  dndHandlerProps: Record<string, any>;
-}
-
-export interface CustomGroupProps<VT> {
-  path: FilterPath;
-  value?: VT;
-  onAddFilter: VoidFunction;
-  onAddFilterGroup: VoidFunction;
-  onCopy: VoidFunction;
-  onDelete: VoidFunction;
-  dndHandlerProps: Record<string, any>;
-}
-
 export interface FieldNameMap {
   connector?: string;
   filters?: string;
