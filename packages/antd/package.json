@@ -4,6 +4,7 @@
   "author": "wangkka1@163.com",
   "license": "MIT",
   "description": "react filter component based on antd component library",
+  "source": "./src/index.ts",
   "main": "lib/index.js",
   "module": "es/index.js",
   "typings": "es/index.d.ts",

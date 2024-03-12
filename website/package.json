@@ -8,9 +8,11 @@
     "preview": "rspress preview"
   },
   "dependencies": {
+    "@react-filter/antd": "workspace:^",
     "rspress": "^1.14.0"
   },
   "devDependencies": {
+    "@rsbuild/plugin-source-build": "^0.4.14",
     "@rspress/plugin-playground": "^1.14.0"
   }
 }

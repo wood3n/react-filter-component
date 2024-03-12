@@ -24,8 +24,8 @@
     "dev": "pnpm --filter @react-filter/core run dev",
     "dev:antd": "pnpm --filter @react-filter/antd run dev",
     "dev:website": "pnpm --filter website run dev",
-    "build:core": "pnpm --filter @react-filter/core run build",
     "build:antd": "pnpm --filter @react-filter/antd run build",
+    "build:website": "pnpm --filter website run build",
     "lint-fix": "eslint --fix --ext .js,.jsx,.ts,.tsx . && stylelint \"**/*.{css,less}\" --fix",
     "prettier": "prettier . --write",
     "test": "jest"

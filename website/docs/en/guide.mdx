@@ -1,0 +1,51 @@
+import { PackageManagerTabs } from '@theme';
+
+# Quick start
+
+## Install
+
+<PackageManagerTabs
+  command={{
+    npm: 'npm install @react-filter/antd',
+    yarn: 'yarn add @react-filter/antd',
+    pnpm: 'pnpm add @react-filter/antd',
+  }}
+/>
+
+## Usage
+
+```jsx pure
+import { ReactFilter } from '@react-filter/antd';
+
+<ReactFilter />;
+```
+
+## API
+
+| Props          | <div style={{ width: 160 }}>Description</div> | Type              | Default Props                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| :------------- | --------------------------------------------- | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `defaultValue` | component default value after mount           | `object`          |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| `value`        | component value                               | `object`          |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| `onChange`     | callback when component value change          | `(value) => void` |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| `connectors`   | relations of filter groups                    | `SelectOption[]`  | `{ label: '且', value: 'AND' }`<br />`{ label: '或', value: 'OR' }`                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| `operators`    | operators of filter item                      | `SelectOption[]`  | `{ label: "等于", "value": "equal"}`<br />`{ "label": "不等于", "value": "not_equal"}`<br />`{ "label": "大于", "value": "greater" }`<br />`{ "label": "大于等于", "value": "greater_equal" }`<br />`{ "label": "小于", "value": "less" }` <br />`{ "label": "小于等于", "value": "less_equal" }`<br />`{ "label": "包含", "value": "in"    }`<br />`{ "label": "不包含", "value": "not_in" }`<br />`{        "label": "模糊匹配", "value": "like" }`<br />`{ "label": "不匹配",        "value": "not_like" }` |
+| `fieldNames`   | field of value                                | `FieldNameMap`    | `{connector: 'connector', filters: 'filters',  left: 'left', operator: 'operator', value: 'value'}`                                                                                                                                                                                                                                                                                                                                                                                                            |
+
+## interface
+
+```typescript
+interface SelectOption {
+  label: React.ReactNode;
+  value: string | number | boolean;
+}
+```
+
+```typescript
+interface FieldNameMap {
+  connector?: string;
+  filters?: string;
+  left?: string;
+  operator?: string;
+  value?: string;
+}
+```

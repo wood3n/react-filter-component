@@ -186,10 +186,16 @@ importers:
 
   website:
     dependencies:
+      '@react-filter/antd':
+        specifier: workspace:^
+        version: link:../packages/antd
       rspress:
         specifier: ^1.14.0
         version: 1.14.0(webpack@5.90.3)
     devDependencies:
+      '@rsbuild/plugin-source-build':
+        specifier: ^0.4.14
+        version: 0.4.14(@rsbuild/core@0.4.14)
       '@rspress/plugin-playground':
         specifier: ^1.14.0
         version: 1.14.0(@rspress/core@1.14.0)(monaco-editor@0.47.0)(react-dom@17.0.2)(react-router-dom@6.22.3)(react@17.0.2)(webpack@5.90.3)
@@ -2846,6 +2852,28 @@ packages:
     transitivePeerDependencies:
       - webpack
 
+  /@rsbuild/core@0.4.14:
+    resolution: {integrity: sha512-MB0pwrOXrB6NqPYWMSfZy5fZsgp+wSDtxuwk1z+4ni8nJjVogmyPyTjhJWmXheBLjoxrrSxla9sUDc8D1R/MQA==}
+    engines: {node: '>=14.0.0'}
+    hasBin: true
+    dependencies:
+      '@rsbuild/shared': 0.4.14(@swc/helpers@0.5.3)
+      '@rspack/core': 0.5.6(@swc/helpers@0.5.3)
+      '@swc/helpers': 0.5.3
+      core-js: 3.32.2
+      html-webpack-plugin: /html-rspack-plugin@5.6.2(@rspack/core@0.5.6)
+      postcss: 8.4.35
+    dev: true
+
+  /@rsbuild/monorepo-utils@0.4.14:
+    resolution: {integrity: sha512-Ks2cHKFzPj+Ihv8OvAivT41RG0ZxWyPdUnbNE+9MhvEozzoi5AHEnS4t7+mHRHZG7ndV40cSkLy/xeKy+2Detg==}
+    dependencies:
+      '@rsbuild/shared': 0.4.14(@swc/helpers@0.5.3)
+      fast-glob: 3.3.2
+    transitivePeerDependencies:
+      - '@swc/helpers'
+    dev: true
+
   /@rsbuild/plugin-react@0.4.11(@rsbuild/core@0.4.11):
     resolution: {integrity: sha512-WYACTgUdb20jk+6pFuH2Q6S0ieUmJhOn/HaBbEpr1g125Ia9uc9IsPInXzhH1r/OafRMnmBHt/WX2O6EAH58vw==}
     peerDependencies:
@@ -2858,6 +2886,18 @@ packages:
     transitivePeerDependencies:
       - '@swc/helpers'
 
+  /@rsbuild/plugin-source-build@0.4.14(@rsbuild/core@0.4.14):
+    resolution: {integrity: sha512-eY6ee/r/DgllC9WUJR9GUrNQHDJE1Whmivt3rmLae9l/mgEPc0Is6V4z6xdTbWLwJLbsP+JLghAuuqO47I66aA==}
+    peerDependencies:
+      '@rsbuild/core': ^0.4.14
+    dependencies:
+      '@rsbuild/core': 0.4.14
+      '@rsbuild/monorepo-utils': 0.4.14
+      '@rsbuild/shared': 0.4.14(@swc/helpers@0.5.3)
+    transitivePeerDependencies:
+      - '@swc/helpers'
+    dev: true
+
   /@rsbuild/shared@0.4.11(@swc/helpers@0.5.3):
     resolution: {integrity: sha512-5akvSBxmQrKcJ85Ks/6UyFRiLWTAQhLXFha7unmGf9rkQ4k0xx0npzKLN8+wTnTVIRlpLqo3GFkLLZ++dFSjSA==}
     dependencies:
@@ -2866,6 +2906,16 @@ packages:
       postcss: 8.4.35
     transitivePeerDependencies:
       - '@swc/helpers'
+
+  /@rsbuild/shared@0.4.14(@swc/helpers@0.5.3):
+    resolution: {integrity: sha512-WlGR4C307/PE6VQ5yiOs5FvZ+FvePMwKP9vYKwlF0nhvOpkWh8dTvvvlC72680b36u68nTOUDAg6+ayU8aF6Yw==}
+    dependencies:
+      '@rspack/core': 0.5.6(@swc/helpers@0.5.3)
+      caniuse-lite: 1.0.30001597
+      postcss: 8.4.35
+    transitivePeerDependencies:
+      - '@swc/helpers'
+    dev: true
 
   /@rspack/binding-darwin-arm64@0.5.6:
     resolution: {integrity: sha512-Aafs4gjzFeJW3DeTHVjom7NpSGeLNOoCtipJlCYCPp2C0J2Bz/uVxQC7xG+CPwL/RDIQOAZTa0jcLiWytBRwzA==}
@@ -6111,6 +6161,20 @@ packages:
       lodash: 4.17.21
       tapable: 2.2.1
       webpack: 5.90.3
+
+  /html-rspack-plugin@5.6.2(@rspack/core@0.5.6):
+    resolution: {integrity: sha512-cPGwV3odvKJ7DBAG/DxF5e0nMMvBl1zGfyDciT2xMETRrIwajwC7LtEB3cf7auoGMK6xJOOLjWJgaKHLu/FzkQ==}
+    engines: {node: '>=10.13.0'}
+    peerDependencies:
+      '@rspack/core': 0.x || 1.x
+    peerDependenciesMeta:
+      '@rspack/core':
+        optional: true
+    dependencies:
+      '@rspack/core': 0.5.6(@swc/helpers@0.5.3)
+      lodash: 4.17.21
+      tapable: 2.2.1
+    dev: true
 
   /html-tags@3.3.1:
     resolution: {integrity: sha512-ztqyC3kLto0e9WbNp0aeP+M3kTt+nbaIveGmUxAtZa+8iFgKLUOD4YKM5j+f3QD89bra7UeumolZHKuOXnTmeQ==}

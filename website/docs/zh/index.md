@@ -3,11 +3,9 @@ pageType: home
 
 hero:
   name: react-filter
-  text: react-filter docs
-  tagline: react-filter tagline
   actions:
     - theme: brand
-      text: Quick Start
+      text: 快速开始
       link: /guide/
     - theme: alt
       text: Github
