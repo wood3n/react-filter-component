@@ -35,7 +35,7 @@ module.exports = {
     sourceType: 'module',
     ecmaVersion: 'latest',
     alwaysTryTypes: true,
-    project: ['**/tsconfig.json', './packages/*/tsconfig.json'],
+    project: ['./tsconfig.base.json', './packages/*/tsconfig.json'],
   },
   overrides: [
     {
