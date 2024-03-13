@@ -4,6 +4,9 @@
   <img width="200px" height="200px" src="./website/docs//public/react-filter.png">
 </p>
 
+[![npm version](https://badge.fury.io/js/@react-filter%2Fantd.svg)](https://badge.fury.io/js/@react-filter%2Fantd)
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+
 ## 安装
 
 ```shell

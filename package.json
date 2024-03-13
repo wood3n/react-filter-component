@@ -26,13 +26,13 @@
     "dev:website": "pnpm --filter website run dev",
     "build:antd": "pnpm --filter @react-filter/antd run build",
     "build:website": "pnpm --filter website run build",
-    "publish": "pnpm publish --filter @react-filter/antd --access=public",
+    "ci:publish": "pnpm publish -r",
     "lint-fix": "eslint --fix --ext .js,.jsx,.ts,.tsx . && stylelint \"**/*.{css,less}\" --fix",
     "prettier": "prettier . --write",
+    "cm": "cz",
     "test": "jest"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.27.1",
     "@commitlint/cli": "^18.2.0",
     "@commitlint/config-conventional": "^18.1.0",
     "@types/node": "^20.10.4",
@@ -40,6 +40,8 @@
     "@types/react-dom": "^17.0.22",
     "@typescript-eslint/eslint-plugin": "^6.9.0",
     "@typescript-eslint/parser": "^6.9.0",
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.52.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^9.0.0",
@@ -53,9 +55,8 @@
     "husky": "^8.0.3",
     "is-ci": "^3.0.1",
     "lint-staged": "^15.0.2",
-    "postcss": "^8.4.31",
-    "postcss-less": "^6.0.0",
     "prettier": "^3.0.3",
+    "semantic-release": "^23.0.2",
     "stylelint": "^15.11.0",
     "stylelint-config-standard": "^34.0.0",
     "stylelint-prettier": "^4.0.2",
@@ -68,6 +69,11 @@
       "prettier --write"
     ],
     "*.{json,md}": "prettier --write",
-    "*.{css,less}": "stylelint --fix"
+    "*.css": "stylelint --fix"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
